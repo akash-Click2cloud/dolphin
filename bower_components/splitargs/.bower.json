@@ -1,0 +1,32 @@
+{
+  "name": "splitargs",
+  "main": "src/splitargs.js",
+  "version": "0.2.0",
+  "homepage": "https://github.com/deviantony/ng-splitargs",
+  "authors": [
+    "Anthony Lapenna <lapenna.anthony@gmail.com>"
+  ],
+  "description": "Splits strings into tokens by given separator except treating quoted part as a single token.",
+  "keywords": [
+    "args",
+    "shell",
+    "parse"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.0",
+    "commit": "6c551b90d0097ff39f251ff46deacbadca03a141"
+  },
+  "_source": "https://github.com/deviantony/splitargs.git",
+  "_target": "~0.2.0",
+  "_originalSource": "splitargs"
+}
