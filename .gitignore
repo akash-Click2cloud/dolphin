@@ -2,7 +2,7 @@ node_modules
 bower_components
 dist
 userdata
-portainer-checksum.txt
+dockm-checksum.txt
 api/cmd/dockm/dockm*
 .tmp
 grunt*
