@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="33d93fa8-79fd-4745-a685-c90fae5a1314" name="Default" comment="fix(authentication): do not use $sanitize with LDAP authentication">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -229,7 +227,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1503556812971</updated>
-      <workItem from="1503556816475" duration="1868000" />
+      <workItem from="1503556816475" duration="1900000" />
     </task>
     <task id="LOCAL-00001" summary="fix(authentication): do not use $sanitize with LDAP authentication">
       <created>1503557387541</created>
@@ -259,11 +257,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503558659059</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix(authentication): do not use $sanitize with LDAP authentication">
+      <created>1503558707887</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1503558707887</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1868000" />
+    <option name="totallyTimeSpent" value="1900000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -297,11 +302,11 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix(authentication): do not use $sanitize with LDAP authentication" />
     <MESSAGE value="feat(dashboard): remove driver information in volumes" />
     <MESSAGE value="feat(container-details): prevent re-creation, edition &amp; duplication for service task" />
     <MESSAGE value="feat(images): use containers instead of /system/df to check unused images" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(images): use containers instead of /system/df to check unused images" />
+    <MESSAGE value="fix(authentication): do not use $sanitize with LDAP authentication" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(authentication): do not use $sanitize with LDAP authentication" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
