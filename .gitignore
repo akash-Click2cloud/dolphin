@@ -1,7 +1,9 @@
 node_modules
 bower_components
 dist
+dist/
 userdata
+Dockerfiles/**/*.tar
 dockm-checksum.txt
 api/cmd/dockm/dockm*
 .tmp
