@@ -580,18 +580,17 @@ ul.sidebar .sidebar-list a:hover {
 .row.header {
   background: #37B7EE !important;
 }
-.text-danger {
-	  color: #900C3E !important;
+.text-logout {
+  color: #204D74;
 }
-/*
-.text-danger:hover {
-    color: #900C3E !important; #C70039
-}*/
+.text-logout:hover {
+  color: #900C3E;
+}
 .text-my-account {
-	  color: #900C3E;
+  color: #204D74;
 }
 .text-my-account:hover {
-    color: #900C3E;
+  color: #000000;
 }
 .meta .pull-left a {
   color: #154360 !important;
