@@ -3,7 +3,7 @@ angular.module('dockm.services')
   'use strict';
   var service = {};
 
-  service.containers = function (all, filters) {
+    service.containers = function(all) { {
     var deferred = $q.defer();
 
     Container.query({ all: all, filters: filters ? filters : {} }).$promise
