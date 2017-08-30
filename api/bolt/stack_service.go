@@ -1,8 +1,8 @@
 package bolt
 
 import (
-	"github.com/shrutikamendhe/dockm/api"
-	"github.com/shrutikamendhe/dockm/api/bolt/internal"
+	"github.com/akash-Click2cloud/dolphin/api"
+	"github.com/akash-Click2cloud/dolphin/api/bolt/internal"
 
 	"github.com/boltdb/bolt"
 )

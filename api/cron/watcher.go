@@ -1,7 +1,7 @@
 package cron
 
 import (
-	"github.com/shrutikamendhe/dockm/api"
+	"github.com/akash-Click2cloud/dolphin/api"
 	"github.com/robfig/cron"
 )
 

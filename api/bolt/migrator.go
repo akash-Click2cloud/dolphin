@@ -1,6 +1,6 @@
 package bolt
 
-import "github.com/shrutikamendhe/dockm/api"
+import "github.com/akash-Click2cloud/dolphin/api"
 
 // Migrator defines a service to migrate data after a DockM version update.
 type Migrator struct {

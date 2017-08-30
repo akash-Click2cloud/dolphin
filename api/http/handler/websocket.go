@@ -16,8 +16,8 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/shrutikamendhe/dockm/api"
-	"github.com/shrutikamendhe/dockm/api/crypto"
+	"github.com/akash-Click2cloud/dolphin/api"
+	"github.com/akash-Click2cloud/dolphin/api/crypto"
 	"golang.org/x/net/websocket"
 )
 

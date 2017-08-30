@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/shrutikamendhe/dockm/api"
+	"github.com/akash-Click2cloud/dolphin/api"
 )
 
 type (

@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/shrutikamendhe/dockm/api"
-	httperror "github.com/shrutikamendhe/dockm/api/http/error"
-	"github.com/shrutikamendhe/dockm/api/http/proxy"
-	"github.com/shrutikamendhe/dockm/api/http/security"
+	"github.com/akash-Click2cloud/dolphin/api"
+	httperror "github.com/akash-Click2cloud/dolphin/api/http/error"
+	"github.com/akash-Click2cloud/dolphin/api/http/proxy"
+	"github.com/akash-Click2cloud/dolphin/api/http/security"
 
 	"encoding/json"
 	"log"

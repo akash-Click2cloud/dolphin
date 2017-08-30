@@ -1,6 +1,6 @@
 package proxy
 
-import "github.com/shrutikamendhe/dockm/api"
+import "github.com/akash-Click2cloud/dolphin/api"
 
 func canUserAccessResource(userID dockm.UserID, userTeamIDs []dockm.TeamID, resourceControl *dockm.ResourceControl) bool {
 	for _, authorizedUserAccess := range resourceControl.UserAccesses {

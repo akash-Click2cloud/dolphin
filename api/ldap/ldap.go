@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/shrutikamendhe/dockm/api"
-	"github.com/shrutikamendhe/dockm/api/crypto"
+	"github.com/akash-Click2cloud/dolphin/api"
+	"github.com/akash-Click2cloud/dolphin/api/crypto"
 
 	"gopkg.in/ldap.v2"
 )

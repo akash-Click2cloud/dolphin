@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	httperror "github.com/shrutikamendhe/dockm/api/http/error"
+	httperror "github.com/akash-Click2cloud/dolphin/api/http/error"
 )
 
 type socketProxy struct {

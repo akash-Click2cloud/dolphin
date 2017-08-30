@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/shrutikamendhe/dockm/api"
+	"github.com/akash-Click2cloud/dolphin/api"
 )
 
 const (

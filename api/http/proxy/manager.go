@@ -5,7 +5,7 @@ import (
 	"net/url"
 
 	"github.com/orcaman/concurrent-map"
-	"github.com/shrutikamendhe/dockm/api"
+	"github.com/akash-Click2cloud/dolphin/api"
 )
 
 // Manager represents a service used to manage Docker proxies.

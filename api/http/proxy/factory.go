@@ -5,8 +5,8 @@ import (
 	"net/http/httputil"
 	"net/url"
 
-	"github.com/shrutikamendhe/dockm/api"
-	"github.com/shrutikamendhe/dockm/api/crypto"
+	"github.com/akash-Click2cloud/dolphin/api"
+	"github.com/akash-Click2cloud/dolphin/api/crypto"
 )
 
 // proxyFactory is a factory to create reverse proxies to Docker endpoints

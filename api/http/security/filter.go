@@ -1,6 +1,6 @@
 package security
 
-import "github.com/shrutikamendhe/dockm/api"
+import "github.com/akash-Click2cloud/dolphin/api"
 
 // FilterUserTeams filters teams based on user role.
 // non-administrator users only have access to team they are member of.

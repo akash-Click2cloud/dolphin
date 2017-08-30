@@ -1,6 +1,6 @@
 package proxy
 
-import "github.com/shrutikamendhe/dockm/api"
+import "github.com/akash-Click2cloud/dolphin/api"
 
 func getResourceControlByResourceID(resourceID string, resourceControls []dockm.ResourceControl) *dockm.ResourceControl {
 	for _, resourceControl := range resourceControls {

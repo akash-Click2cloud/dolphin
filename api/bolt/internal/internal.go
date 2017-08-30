@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"github.com/shrutikamendhe/dockm/api"
+	"github.com/akash-Click2cloud/dolphin/api"
 
 	"encoding/binary"
 	"encoding/json"

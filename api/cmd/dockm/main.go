@@ -1,16 +1,16 @@
-package main // import "github.com/shrutikamendhe/dockm/api"
+package main // import "github.com/akash-Click2cloud/dolphin/api"
 
 import (
-	"github.com/shrutikamendhe/dockm/api"
-	"github.com/shrutikamendhe/dockm/api/bolt"
-	"github.com/shrutikamendhe/dockm/api/cli"
-	"github.com/shrutikamendhe/dockm/api/cron"
-	"github.com/shrutikamendhe/dockm/api/crypto"
-	"github.com/shrutikamendhe/dockm/api/file"
-	"github.com/shrutikamendhe/dockm/api/http"
-	"github.com/shrutikamendhe/dockm/api/jwt"
-    "github.com/shrutikamendhe/dockm/api/ldap"
-	"../../libcompose"
+	"github.com/akash-Click2cloud/dolphin/api"
+	"github.com/akash-Click2cloud/dolphin/api/bolt"
+	"github.com/akash-Click2cloud/dolphin/api/cli"
+	"github.com/akash-Click2cloud/dolphin/api/cron"
+	"github.com/akash-Click2cloud/dolphin/api/crypto"
+	"github.com/akash-Click2cloud/dolphin/api/file"
+	"github.com/akash-Click2cloud/dolphin/api/http"
+	"github.com/akash-Click2cloud/dolphin/api/jwt"
+	"github.com/akash-Click2cloud/dolphin/api/ldap"
+	"github.com/akash-Click2cloud/dolphin/api/libcompose"
 
 	"log"
 )
@@ -123,12 +123,12 @@ func initSettings(settingsService dockm.SettingsService, flags *dockm.CLIFlags) 
 		settings := &dockm.Settings{
 			LogoURL:                     *flags.Logo,
 			DisplayExternalContributors: true,
-            AuthenticationMethod:        dockm.AuthenticationInternal,
+			AuthenticationMethod:        dockm.AuthenticationInternal,
 			LDAPSettings: dockm.LDAPSettings{
-			TLSConfig: dockm.TLSConfiguration{},
-			SearchSettings: []dockm.LDAPSearchSettings{
+				TLSConfig: dockm.TLSConfiguration{},
+				SearchSettings: []dockm.LDAPSearchSettings{
 					dockm.LDAPSearchSettings{},
-			},
+				},
 			},
 		}
 
@@ -173,8 +173,8 @@ func main() {
 	jwtService := initJWTService(!*flags.NoAuth)
 
 	cryptoService := initCryptoService()
- 
-    ldapService := initLDAPService()
+
+	ldapService := initLDAPService()
 
 	authorizeEndpointMgmt := initEndpointWatcher(store.EndpointService, *flags.ExternalEndpoints, *flags.SyncInterval)
 
@@ -248,7 +248,7 @@ func main() {
 		CryptoService:          cryptoService,
 		JWTService:             jwtService,
 		FileService:            fileService,
-        LDAPService:            ldapService,
+		LDAPService:            ldapService,
 		SSL:                    *flags.SSL,
 		SSLCert:                *flags.SSLCert,
 		SSLKey:                 *flags.SSLKey,

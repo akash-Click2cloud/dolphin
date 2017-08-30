@@ -1,7 +1,7 @@
 package libcompose
 
 import (
-	"github.com/shrutikamendhe/dockm/api"
+	"github.com/akash-Click2cloud/dolphin/api"
 
 	"github.com/Click2Cloud/libcompose/project/options"
 	"golang.org/x/net/context"

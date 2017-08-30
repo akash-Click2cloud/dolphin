@@ -1,10 +1,10 @@
 package http
 
 import (
-	"github.com/shrutikamendhe/dockm/api"
-	"github.com/shrutikamendhe/dockm/api/http/handler"
-	"github.com/shrutikamendhe/dockm/api/http/proxy"
-	"github.com/shrutikamendhe/dockm/api/http/security"
+	"github.com/akash-Click2cloud/dolphin/api"
+	"github.com/akash-Click2cloud/dolphin/api/http/handler"
+	"github.com/akash-Click2cloud/dolphin/api/http/proxy"
+	"github.com/akash-Click2cloud/dolphin/api/http/security"
 
 	"net/http"
 )

@@ -1,6 +1,6 @@
 package proxy
 
-import "github.com/shrutikamendhe/dockm/api"
+import "github.com/akash-Click2cloud/dolphin/api"
 
 // filterVolumeList loops through all volumes, filters volumes without any resource control (public resources) or with
 // any resource control giving access to the user (these volumes will be decorated).

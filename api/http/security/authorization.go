@@ -1,6 +1,6 @@
 package security
 
-import "github.com/shrutikamendhe/dockm/api"
+import "github.com/akash-Click2cloud/dolphin/api"
 
 // AuthorizedResourceControlDeletion ensure that the user can delete a resource control object.
 // A non-administrator user cannot delete a resource control where:

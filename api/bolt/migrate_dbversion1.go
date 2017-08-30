@@ -2,8 +2,8 @@ package bolt
 
 import (
 	"github.com/boltdb/bolt"
-	"github.com/shrutikamendhe/dockm/api"
-	"github.com/shrutikamendhe/dockm/api/bolt/internal"
+	"github.com/akash-Click2cloud/dolphin/api"
+	"github.com/akash-Click2cloud/dolphin/api/bolt/internal"
 )
 
 func (m *Migrator) updateResourceControlsToDBVersion2() error {

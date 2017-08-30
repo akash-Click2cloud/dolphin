@@ -1,6 +1,6 @@
 package proxy
 
-import "github.com/shrutikamendhe/dockm/api"
+import "github.com/akash-Click2cloud/dolphin/api"
 
 // decorateVolumeList loops through all volumes and will decorate any volume with an existing resource control.
 // Volume object schema reference: https://docs.docker.com/engine/api/v1.28/#operation/VolumeList

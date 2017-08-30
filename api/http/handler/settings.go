@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 
 	"github.com/asaskevich/govalidator"
-	"github.com/shrutikamendhe/dockm/api"
-    "github.com/shrutikamendhe/dockm/api/file"
-	httperror "github.com/shrutikamendhe/dockm/api/http/error"
-	"github.com/shrutikamendhe/dockm/api/http/security"
+	"github.com/akash-Click2cloud/dolphin/api"
+    "github.com/akash-Click2cloud/dolphin/api/file"
+	httperror "github.com/akash-Click2cloud/dolphin/api/http/error"
+	"github.com/akash-Click2cloud/dolphin/api/http/security"
 
 	"log"
 	"net/http"

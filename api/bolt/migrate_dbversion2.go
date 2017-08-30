@@ -1,6 +1,6 @@
 package bolt
 
-import "github.com/shrutikamendhe/dockm/api"
+import "github.com/akash-Click2cloud/dolphin/api"
 
 func (m *Migrator) updateSettingsToVersion3() error {
 	legacySettings, err := m.SettingsService.Settings()

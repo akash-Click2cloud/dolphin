@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/shrutikamendhe/dockm/api"
+	"github.com/akash-Click2cloud/dolphin/api"
 
 	"encoding/json"
 	"log"
@@ -10,8 +10,8 @@ import (
 
 	"github.com/asaskevich/govalidator"
 	"github.com/gorilla/mux"
-	httperror "github.com/shrutikamendhe/dockm/api/http/error"
-	"github.com/shrutikamendhe/dockm/api/http/security"
+	httperror "github.com/akash-Click2cloud/dolphin/api/http/error"
+	"github.com/akash-Click2cloud/dolphin/api/http/security"
 )
 
 // AuthHandler represents an HTTP API handler for managing authentication.

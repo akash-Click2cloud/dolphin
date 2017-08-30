@@ -7,4 +7,6 @@ Dockerfiles/**/*.tar
 dockm-checksum.txt
 api/cmd/dockm/dockm*
 .tmp
+.idea
+.idea/
 grunt*
