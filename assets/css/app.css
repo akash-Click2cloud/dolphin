@@ -642,3 +642,15 @@ body {
 body {
   font-family: "Montserrat" !important;
 }
+.btn {
+  font-size: 12px !important;
+}
+.sidebar-sublist {
+  padding-left: 5% !important;
+}
+.widget .widget-body {
+  padding: 20px 20px 40px 20px !important;
+}
+.widget .widget-icon {
+  border-radius: 0% !important;
+}

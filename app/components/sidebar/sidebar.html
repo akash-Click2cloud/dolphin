@@ -23,9 +23,10 @@
     <div class="cd-panel-container">
         <div class="cd-panel-content">
             <div class="innerBox">
-                <p class="cPanelTabs"><a href="#" class="animated fadeInUp delay current"><i class="fa fa-bars" aria-hidden="true"></i></a><a href="#" class="animated fadeInUp delay"><i class="fa fa-cog" aria-hidden="true"></i></a><a href="#" class="animated fadeInUp delay"><i class="fa fa-user" aria-hidden="true"></i></a></p>
+                <div class="breadcrumb-links"><div class="pull-left" ng-transclude></div><div class="pull-right" ng-if="username"><a ui-sref="userSettings" class="text-my-account" style="margin-right: 5px;"><u><i class="fa fa-wrench" aria-hidden="true"></i> my account </u></a><a ui-sref="auth({logout: true})" class="text-logout" style="margin-right: 25px;"><u><i class="fa fa-sign-out" aria-hidden="true"></i> log out</u></a></div></div>
+                <p class="cPanelTabs"><a ui-sref="userSettings" class="animated fadeInUp delay current"><i class="fa fa-bars" aria-hidden="true"></i></a><a ui-sref="userSettings" class="animated fadeInUp delay"><i class="fa fa-cog" aria-hidden="true"></i></a><a ui-sref="auth({logout: true})" ui-sref-active="active" class="animated fadeInUp delay"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
                 <h1>DockM</h1>
-                <select class="select-endpoint form-control inputCtl" ng-options="endpoint.Name for endpoint in endpoints" ng-model="activeEndpoint" ng-change="switchEndpoint(activeEndpoint)">
+                <select class="inputCtl select-endpoint form-control" ng-options="endpoint.Name for endpoint in endpoints" ng-model="activeEndpoint" ng-change="switchEndpoint(activeEndpoint)">
                 </select>
             </div>
 
@@ -33,6 +34,8 @@
             <ul class="sideLink">
                 <li class="sidebar-list"><a ui-sref="dashboard" ui-sref-active="active"><i class="fa fa-th" aria-hidden="true"></i>Dashboard</a></li>
                 <li class="sidebar-list"><a ui-sref="templates" ui-sref-active="active"><i class="fa fa-space-shuttle" aria-hidden="true"></i>App Templates</a></li>
+                    <!--<li class="sidebar-sublist"><a ui-sref="templates_linuxserver" ui-sref-active="active" ng-if="toggle && displayExternalContributors && ($state.current.name === 'templates' || $state.current.name === 'templates_linuxserver')"><i aria-hidden="true"></i>   LinuxServer.io</a></li>-->
+                    <li class="sidebar-sublist"><a ui-sref="templates_linuxserver" ui-sref-active="active"><i aria-hidden="true"></i>LinuxServer.io</a></li>
                 <li class="sidebar-list"><a ui-sref="stacks" ui-sref-active="active"><i class="fa fa-th-list" aria-hidden="true"></i>Stack</a></li>
                 <li class="sidebar-list"><a ui-sref="services" ui-sref-active="active"><i class="fa fa-life-ring" aria-hidden="true"></i>Services</a></li>
                 <li class="sidebar-list"><a ui-sref="containers" ui-sref-active="active"><i class="fa fa-server" aria-hidden="true"></i>Containers</a></li>
@@ -45,9 +48,11 @@
             <h1 class="innerBox">DockM Settings</h1>
             <ul class="sideLink">
                 <li class="sidebar-list"><a ui-sref="users" ui-sref-active="active"><i class="fa fa-users" aria-hidden="true"></i>User management</a></li>
+                    <li class="sidebar-sublist"><a ui-sref="teams" ui-sref-active="active"><i aria-hidden="true"></i>Teams</a></li>
                 <li class="sidebar-list"><a ui-sref="endpoints" ui-sref-active="active"><i class="fa fa-plug" aria-hidden="true"></i>Endpoints</a></li>
                 <li class="sidebar-list"><a ui-sref="registries" ui-sref-active="active"><i class="fa fa-database" aria-hidden="true"></i>Registries</a></li>
                 <li class="sidebar-list"><a ui-sref="settings" ui-sref-active="active"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
+                    <li class="sidebar-sublist"><a ui-sref="settings_authentication" ui-sref-active="active"><i aria-hidden="true"></i>Authentication</a></li>
             </ul>
 
         </div> <!-- cd-panel-content -->
