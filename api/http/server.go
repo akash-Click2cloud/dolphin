@@ -15,11 +15,13 @@ type Server struct {
 	AssetsPath             string
 	AuthDisabled           bool
 	EndpointManagement     bool
+	AppToContainerManagement bool //click2cloud-apptocontainer
 	Status                 *dockm.Status
 	UserService            dockm.UserService
 	TeamService            dockm.TeamService
 	TeamMembershipService  dockm.TeamMembershipService
 	EndpointService        dockm.EndpointService
+	AppToContainerService  dockm.AppToContainerService//click2cloud-apptocontainer
 	ResourceControlService dockm.ResourceControlService
 	SettingsService        dockm.SettingsService
 	CryptoService          dockm.CryptoService
@@ -77,6 +79,8 @@ func (server *Server) Start() error {
 	endpointHandler.EndpointService = server.EndpointService
 	endpointHandler.FileService = server.FileService
 	endpointHandler.ProxyManager = proxyManager
+	var appToContainerHandler = handler.NewAppToContainerHandler(requestBouncer, server.AppToContainerManagement)//click2cloud-apptocontainer
+	appToContainerHandler.AppToContainerService = server.AppToContainerService//click2cloud-apptocontainer
 	var registryHandler = handler.NewRegistryHandler(requestBouncer)
 	registryHandler.RegistryService = server.RegistryService
 	var dockerHubHandler = handler.NewDockerHubHandler(requestBouncer)
@@ -97,6 +101,7 @@ func (server *Server) Start() error {
 		TeamHandler:           teamHandler,
 		TeamMembershipHandler: teamMembershipHandler,
 		EndpointHandler:       endpointHandler,
+		AppToContainerHandler: appToContainerHandler,//click2cloud-apptocontainer
 		RegistryHandler:       registryHandler,
 		DockerHubHandler:      dockerHubHandler,
 		ResourceHandler:       resourceHandler,

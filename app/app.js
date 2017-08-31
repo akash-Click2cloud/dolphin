@@ -34,6 +34,7 @@ angular.module('dockm', [
   'createVolume',
   'docker',
   'endpoint',
+  'appToContainer',
   'endpointAccess',
   'endpointInit',
   'endpoints',
@@ -809,7 +810,20 @@ angular.module('dockm', [
           controller: 'SidebarController'
         }
       }
-    });
+    })
+    .state('apptocontainer', {
+        url: '/appToContainer/',
+        views: {
+            'content@': {
+                templateUrl: 'app/components/appToContainer/appToContainer.html',
+                controller: 'appToContainerController'
+            },
+            'sidebar@': {
+                templateUrl: 'app/components/sidebar/sidebar.html',
+                controller: 'SidebarController'
+            }
+        }
+    })
   }])
   .run(['$rootScope', '$state', 'Authentication', 'authManager', 'StateManager', 'EndpointProvider', 'Notifications', 'Analytics', function ($rootScope, $state, Authentication, authManager, StateManager, EndpointProvider, Notifications, Analytics) {
     EndpointProvider.initialize();
@@ -843,6 +857,7 @@ angular.module('dockm', [
   .constant('API_ENDPOINT_AUTH', 'api/auth')
   .constant('API_ENDPOINT_DOCKERHUB', 'api/dockerhub')
   .constant('API_ENDPOINT_ENDPOINTS', 'api/endpoints')
+  .constant('API_ENDPOINT_APPTOCONTAINER', 'api/apptocontainer')
   .constant('API_ENDPOINT_REGISTRIES', 'api/registries')
   .constant('API_ENDPOINT_RESOURCE_CONTROLS', 'api/resource_controls')
   .constant('API_ENDPOINT_SETTINGS', 'api/settings')

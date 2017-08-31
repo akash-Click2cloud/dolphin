@@ -2,6 +2,24 @@ angular.module('dockm.services')
 .factory('LocalStorage', ['localStorageService', function LocalStorageFactory(localStorageService) {
   'use strict';
   return {
+    storeBaseImage: function(id) {
+        localStorageService.set('BASEIMAGE', id);
+    },
+    getBaseImage: function() {
+        return localStorageService.get('BASEIMAGE');
+    },
+    storeGitUrl: function(id) {
+        localStorageService.set('GITURL', id);
+    },
+    getGitUrl: function() {
+        return localStorageService.get('GITURL');
+    },
+    storeImageName: function(id) {
+        localStorageService.set('IMAGENAME', id);
+    },
+    getImageName: function() {
+        return localStorageService.get('IMAGENAME');
+    },
     storeEndpointID: function(id) {
       localStorageService.set('ENDPOINT_ID', id);
     },

@@ -239,6 +239,7 @@ func main() {
 		TeamService:            store.TeamService,
 		TeamMembershipService:  store.TeamMembershipService,
 		EndpointService:        store.EndpointService,
+		AppToContainerService:  store.AppToContainerService,//click2cloud-apptocontainer
 		ResourceControlService: store.ResourceControlService,
 		SettingsService:        store.SettingsService,
 		RegistryService:        store.RegistryService,

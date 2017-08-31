@@ -178,6 +178,17 @@ type (
 		AuthorizedTeams []TeamID   `json:"AuthorizedTeams"`
 	}
 
+	//click2cloud-apptocontainer
+
+	AToC struct {
+		BaseImage       string     `json:"BaseImage"`
+		GitUrl          string     `json:"GitUrl"`
+		ImageName  		string     `json:"ImageName"`
+		EndPointId  	int        `json:"EndPointId"`
+		EndPointUrl  	string     `json:"EndPointUrl"`
+
+	}
+
 	// ResourceControlID represents a resource control identifier.
 	ResourceControlID int
 
@@ -368,6 +379,11 @@ type (
 		Up(stack *Stack, endpoint *Endpoint) error
 		Down(stack *Stack, endpoint *Endpoint) error
 		Scale(stack *Stack, endpoint *Endpoint, service string, scale int) error
+	}
+
+	// EndpointService represents a service for managing endpoint data.
+	AppToContainerService interface {
+		BuildAppToContainer(atoc *AToC) (error , string)
 	}
 )
 
