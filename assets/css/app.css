@@ -639,3 +639,6 @@ body {
   z-index: inherit !important;
 }
 
+body {
+  font-family: "Montserrat" !important;
+}

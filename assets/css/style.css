@@ -1,6 +1,5 @@
 body {
   font-size: 100%;
-  font-family: "Segoe UI", sans-serif;
   color: #333;
   background: #d5dbdb ;
   margin:0;padding:0;
@@ -16,7 +15,7 @@ body {margin-bottom: 60px;}
 
 .homePg{padding: 0px !important;background-image: url("../images/laith-abdulkareem-96120.jpg");background-size: cover;background-position: center center;}
 
-a {color:#f4511e ;text-decoration: none;}
+a {color:#337ab7 ;text-decoration: none;}
 p{padding: 0px 0px 20px 0px;}
 
 .right{text-align:right;}
@@ -27,7 +26,7 @@ p{padding: 0px 0px 20px 0px;}
 
 .cd-panel-content ul.sideLink{padding: 0;margin: 0;}
 .cd-panel-content ul.sideLink li{padding: 0;margin: 0;}
-.cd-panel-content ul.sideLink a{display: block;color: #fff;padding: 10px 5%;font-size: 14px;}
+.cd-panel-content ul.sideLink a{display: block;color: #fff;padding: 10px 5%;font-size: 13px;}
 .cd-panel-content ul.sideLink a i{margin-right: 20px;}
 .cd-panel-content ul.sideLink a:hover{background-color:#643EBF;}
 
