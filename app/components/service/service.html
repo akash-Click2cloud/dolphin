@@ -10,6 +10,7 @@
   </rd-header-content>
 </rd-header>
 
+<div class="container">
 <div class="row">
   <div ng-if="isUpdating" class="col-lg-12 col-md-12 col-xs-12">
     <div class="alert alert-info" role="alert" id="service-update-alert">
@@ -167,4 +168,5 @@
     <div id="service-secrets" ng-if="applicationState.endpoint.apiVersion >= 1.25" class="padding-top" ng-include="'app/components/service/includes/secrets.html'"></div>
     <div id="service-tasks" class="padding-top" ng-include="'app/components/service/includes/tasks.html'"></div>
   </div>
+</div>
 </div>
