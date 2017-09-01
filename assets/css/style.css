@@ -42,8 +42,10 @@ p{padding: 0px 0px 20px 0px;}
 .loginBlock{background-color:#2D004E;color:#fff;padding:100px 40px;}
 .tooltip > .tooltip-inner {background-color: #03a9f4;color: #fff;border:none;padding: 5px 10px;font-size:11px;border-radius: 0;}
 .tooltip.left > .tooltip-arrow {border-left: 5px solid #03a9f4;}
-.quickLink {display:block;padding:10px;background-color: #777;text-align: center;color: #fff;margin-left:10px;margin-top:5px;width:40px;}
+.quickLink {display:block;padding:10px;background-color: #777;text-align: center;color: #fff;margin-left:auto;margin-right: auto;margin-top:10px;width:40px;}
 .quickLink:hover {background-color: #fff;color: #222;}
 .quickPanel a:first-child{margin-top: 20px;}
-.quickPanel{position: absolute;top:0;right:0;width:60px;height:100%;padding:0px;background-color: #2e292f;color: #efefef;display: block;}
+.quickPanel{position: absolute;top:0;right:0;width:100%;height:100%;padding:0px;background-color: #2e292f;color: #efefef;display: block;}
 .quickPanel hr{margin: 10px 0px;display: block;height: 1px;border: 0;border-top: 1px solid #555;padding: 0; }
+
+.quickPanel-container{position: fixed;top:0;right:0;width:65px;height:100%;padding:0px;background-color: #2e292f;color: #efefef;display: block;z-index: 999;overflow: auto}

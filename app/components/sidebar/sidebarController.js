@@ -46,6 +46,21 @@ function ($q, $scope, $state, Settings, EndpointService, StateManager, EndpointP
   }
 
   function initView() {
+      //open the lateral panel
+      $('.hamburger').on('click', function(event){
+          event.preventDefault();
+          $('.cd-panel').addClass('is-visible');
+      });
+      //clode the lateral panel
+      $('.cd-panel').on('click', function(event){
+          if( $(event.target).is('.cd-panel') || $(event.target).is('.cd-panel-close') ) {
+              $('.cd-panel').removeClass('is-visible');
+              event.preventDefault();
+          }
+      });
+
+
+
     EndpointService.endpoints()
     .then(function success(data) {
       var endpoints = data;
