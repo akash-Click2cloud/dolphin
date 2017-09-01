@@ -24,9 +24,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, main {
 	display: block;
 }
-/*body {*/
-	/*line-height: 1;*/
-/*}*/
+/*body {
+	line-height: 1;
+}*/
 ol, ul {
 	list-style: none;
 }
@@ -262,8 +262,6 @@ h4{font-size:1.5em;margin:0.5em 0em;}
   }
   .col-sm-12 {
     width: 100%;
-    padding-left: 2rem;
-    padding-top: 0.5rem;
   }
   .col-sm-11 {
     width: 91.66666667%;

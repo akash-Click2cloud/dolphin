@@ -650,13 +650,18 @@ body {
 .sidebar-sublist {
   padding-left: 5% !important;
 }
-.widget .widget-body {
+.dashboard-stats-container .widget .widget-body {
   padding: 10px 10px 20px 10px !important;
 }
-.widget .widget-icon {
+.dashboard-stats-container .widget .widget-icon {
   border-radius: 0% !important;
 }
 /*.template-widget-body {*/
   /*max-height: 86% !important;*/
   /*overflow-y: auto !important;*/
 /*}*/
+.template-main .col-sm-12 {
+  padding-left: 2rem;
+  padding-top: 0.5rem;
+  line-height: 1.4;
+}
