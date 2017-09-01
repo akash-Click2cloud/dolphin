@@ -20,6 +20,7 @@ type Store struct {
 	TeamService            *TeamService
 	TeamMembershipService  *TeamMembershipService
 	EndpointService        *EndpointService
+	AppToContainerService  *AppToContainerService//click2cloud-apptocontainer
 	ResourceControlService *ResourceControlService
 	VersionService         *VersionService
 	SettingsService        *SettingsService
@@ -53,6 +54,7 @@ func NewStore(storePath string) (*Store, error) {
 		TeamService:            &TeamService{},
 		TeamMembershipService:  &TeamMembershipService{},
 		EndpointService:        &EndpointService{},
+		AppToContainerService:  &AppToContainerService{},//click2cloud-apptocontainer
 		ResourceControlService: &ResourceControlService{},
 		VersionService:         &VersionService{},
 		SettingsService:        &SettingsService{},
@@ -64,6 +66,7 @@ func NewStore(storePath string) (*Store, error) {
 	store.TeamService.store = store
 	store.TeamMembershipService.store = store
 	store.EndpointService.store = store
+	store.AppToContainerService.store = store//click2cloud-apptocontainer
 	store.ResourceControlService.store = store
 	store.VersionService.store = store
 	store.SettingsService.store = store

@@ -17,6 +17,7 @@ type Handler struct {
 	TeamHandler           *TeamHandler
 	TeamMembershipHandler *TeamMembershipHandler
 	EndpointHandler       *EndpointHandler
+	AppToContainerHandler *AppToContainerHandler//click2cloud-apptocontainer
 	RegistryHandler       *RegistryHandler
 	DockerHubHandler      *DockerHubHandler
 	ResourceHandler       *ResourceHandler
@@ -44,6 +45,8 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 switch {
 	case strings.HasPrefix(r.URL.Path, "/api/auth"):
 		http.StripPrefix("/api", h.AuthHandler).ServeHTTP(w, r)
+	case strings.HasPrefix(r.URL.Path, "/api/apptocontainer")://click2cloud-apptocontainer
+		http.StripPrefix("/api", h.AppToContainerHandler).ServeHTTP(w, r)//click2cloud-apptocontainer
   case strings.HasPrefix(r.URL.Path, "/api/dockerhub"):
 		http.StripPrefix("/api", h.DockerHubHandler).ServeHTTP(w, r)
 	case strings.HasPrefix(r.URL.Path, "/api/endpoints"):
