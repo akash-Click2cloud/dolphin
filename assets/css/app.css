@@ -152,8 +152,10 @@ a[ng-click]{
 }
 
 .template-container {
-  padding: 0.7rem;
-  margin-bottom: 0.7rem;
+  padding: 0.4rem 0.7rem 0.4rem 0.9rem;
+  margin-bottom: 0.5rem;
+  /*padding-left: 0.7rem;*/
+  /*margin-bottom: 0.7rem;*/
   cursor: pointer;
   border: 1px solid #333333;
   border-radius: 2px;
@@ -649,8 +651,12 @@ body {
   padding-left: 5% !important;
 }
 .widget .widget-body {
-  padding: 20px 20px 40px 20px !important;
+  padding: 10px 10px 20px 10px !important;
 }
 .widget .widget-icon {
   border-radius: 0% !important;
 }
+/*.template-widget-body {*/
+  /*max-height: 86% !important;*/
+  /*overflow-y: auto !important;*/
+/*}*/
