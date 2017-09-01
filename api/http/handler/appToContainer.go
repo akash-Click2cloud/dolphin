@@ -14,7 +14,7 @@ import (
 
 )
 
-// AppToContainerHandler represents an HTTP API handler for managing AppToContaine
+// AppToContainerHandler represents an HTTP API handler for managing AppToContainer
 type AppToContainerHandler struct {
 	*mux.Router
 	Logger                            *log.Logger
