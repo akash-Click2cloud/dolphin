@@ -1,8 +1,6 @@
-FROM centos
+FROM click2cloud/centos-git
 
 COPY s2i /usr/local/bin
-
-RUN yum install -y git
 
 WORKDIR click2cloud-dockm/
 

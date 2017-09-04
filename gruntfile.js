@@ -54,12 +54,27 @@ module.exports = function (grunt) {
         'copy',
         'after-copy'
     ]);
+    grunt.registerTask('buildWindows', [
+        'config:dev',
+        'clean:app',
+        'shell:buildBinaryWindows:linux:amd64',
+        'vendor:regular',
+        'html2js',
+        'useminPrepare:dev',
+        'concat',
+        'clean:tmpl',
+        'replace',
+        'copy',
+        'after-copy'
+    ]);
     grunt.task.registerTask('release', 'release:<platform>:<arch>', function(p, a) {
         grunt.task.run(['config:prod', 'clean:all', 'shell:buildBinary:'+p+':'+a, 'before-copy', 'copy:assets', 'after-copy' ]);
     });
     grunt.registerTask('lint', ['eslint']);
     grunt.registerTask('run-dev', ['build', 'shell:run', 'watch:build']);
     grunt.registerTask('run-dev-frontend', ['build-frontend', 'watch:buildfrontend']);
+    grunt.registerTask('build-in-windows', ['buildWindows' ]);
+    grunt.registerTask('build-windows-image', [ 'shell:buildDockerImageWindows' ]);
     grunt.registerTask('clear', ['clean:app']);
 
     // Project configuration.
@@ -195,6 +210,17 @@ module.exports = function (grunt) {
                     } else {
                         return 'build/build_in_container.sh ' + p + ' ' + a;
                     }
+                }
+            },
+            buildBinaryWindows: {
+                command: function (p, a) {
+
+                        return 'build\\build_in_container.bat ' + p + ' ' + a;
+                }
+            },
+            buildDockerImageWindows: {
+                command: function () {
+                        return 'build\\build_docker_image.bat';
                 }
             },
             run: {

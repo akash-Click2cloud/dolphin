@@ -22,7 +22,7 @@
                             <portainer-tooltip position="bottom" message="Specify builder image name. This field is mandatory."></portainer-tooltip>
                         </label>
                         <div class="col-sm-9 col-lg-10">
-                            <input type="text" class="form-control" id="container_name" list="dropdown" ng-model="formValues.BaseImage" placeholder="e.g. rhscl/ruby-22-rhel7">
+                            <input type="text" autocomplete="off" class="form-control" id="container_name" list="dropdown" ng-model="formValues.BaseImage" placeholder="e.g. rhscl/ruby-22-rhel7">
                             <datalist  id="dropdown">
                                 <option ng-repeat="x in builderImage">{{x}}</option>
                             </datalist>

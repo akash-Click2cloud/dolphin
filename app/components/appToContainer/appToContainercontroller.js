@@ -8,7 +8,7 @@ angular.module('appToContainer', [])
                 GitUrl: '',
                 ImageName: ''
             };
-            $scope.builderImage = ['centos/python-35-centos7','openshift/perl-516-centos7','openshift/nodejs-010-centos7','openshift/ruby-20-centos7','openshift/php-55-centos7'];
+            $scope.builderImage = ['centos/python-35-centos7','click2cloud/perl-516-centos7','click2cloud/nodejs-010-centos7','click2cloud/ruby-20-centos7','click2cloud/php-55-centos7'];
             $scope.buildApptocontainer = function() {
                     var BaseImage =$scope.formValues.BaseImage;
                     var GitUrl =$scope.formValues.GitUrl;
