@@ -81,6 +81,7 @@ func (server *Server) Start() error {
 	endpointHandler.ProxyManager = proxyManager
 	var appToContainerHandler = handler.NewAppToContainerHandler(requestBouncer, server.AppToContainerManagement)//click2cloud-apptocontainer
 	appToContainerHandler.AppToContainerService = server.AppToContainerService//click2cloud-apptocontainer
+	appToContainerHandler.EndpointService = server.EndpointService
 	var registryHandler = handler.NewRegistryHandler(requestBouncer)
 	registryHandler.RegistryService = server.RegistryService
 	var dockerHubHandler = handler.NewDockerHubHandler(requestBouncer)

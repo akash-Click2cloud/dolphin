@@ -4,25 +4,41 @@ import (
 	"os/exec"
 	"bytes"
 	 "strconv"
-	"github.com/akash-Click2cloud/dolphin/api/file"
 
+	"strings"
+	"fmt"
 )
 var Output       string
 type AppToContainerService struct {
 	store *Store
 }
 
+var endpoint *dockm.Endpoint
+var endpointErr error
 
 // CreateEndpoint assign an ID to a new endpoint and saves it.
 
-func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC) ( error , string ) {
-	var TLSCertPath="C:\\data"+file.TLSStorePath+strconv.Itoa(atoc.EndPointId)+"cert.pem"
+func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC, endpoint *dockm.Endpoint) ( error , string ) {
+
+	//endpoint, endpointErr = service.store.EndpointService.Endpoint(dockm.EndpointID(atoc.EndPointId))
+
+	/*var TLSCertPath="C:\\data"+file.TLSStorePath+strconv.Itoa(atoc.EndPointId)+"cert.pem"
 	var TLSCaPath  ="C:\\data"+file.TLSStorePath+strconv.Itoa(atoc.EndPointId)+"ca.pem"
 	var TLkeyPath="C:\\data"+file.TLSStorePath+strconv.Itoa(atoc.EndPointId)+"key.pem"
 	var DockerURL="tcp://"+atoc.EndPointUrl+":2376"
-	var TLS="true"
+	var TLS="true"*/
 	command:="s2i"
-	comarg := []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName,"--ca",TLSCaPath,"--cert",TLSCertPath,"--key",TLkeyPath,"--tls",TLS, "--url",DockerURL}
+	var comarg []string
+
+	if strings.HasPrefix(endpoint.URL, "tcp://") &&  endpoint.TLS{
+		comarg = []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName,"--ca",endpoint.TLSCACertPath,"--cert",endpoint.TLSCertPath,"--key",endpoint.TLSKeyPath,"--tls",strconv.FormatBool(endpoint.TLS), "--url",endpoint.URL}
+	}else if strings.HasPrefix(endpoint.URL, "unix://") {
+		comarg = []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName}
+	}
+
+
+	//comarg := []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName,"--ca",TLSCaPath,"--cert",TLSCertPath,"--key",TLkeyPath,"--tls",TLS, "--url",DockerURL}
+	//comarg := []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName,"--ca",endpoint.TLSCACertPath,"--cert",endpoint.TLSCertPath,"--key",endpoint.TLSKeyPath,"--tls",strconv.FormatBool(endpoint.TLS), "--url",endpoint.URL}
 	cmd := exec.Command(command,comarg...)
 	var outb, errb bytes.Buffer
 	cmd.Stdout = &outb
@@ -34,6 +50,7 @@ func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC) ( er
 		Output=stdout+stderr
 	}
 	Output=stdout+stderr
+	fmt.Println(Output)
 	return err ,Output
 }
 //func (service *AppToContainerService) OutputData () string{
