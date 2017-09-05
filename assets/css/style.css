@@ -28,7 +28,7 @@ p{padding: 0px 0px 20px 0px;}
 .cd-panel-content ul.sideLink li{padding: 0;margin: 0;}
 .cd-panel-content ul.sideLink a{display: block;color: #fff;padding: 11px 5%;font-size: 13px;}
 .cd-panel-content ul.sideLink a i{margin-right: 20px;}
-.cd-panel-content ul.sideLink a:hover{background-color:#643EBF;}
+.cd-panel-content ul.sideLink a:hover{background-color:#1A2226; border-right: 3px solid #03A9F4;}
 
 .cPanelTabs{border-bottom: solid 1px #777;margin-bottom: 10px;overflow: hidden;padding:0px 0px 5px 0px;}
 .cPanelTabs a{display: inline-block;padding:10px;width: 50px; background-color: #777;text-align: center;color: #fff;margin-right:4px;float: left;}
@@ -45,7 +45,7 @@ p{padding: 0px 0px 20px 0px;}
 .quickLink {display:block;padding:10px;background-color: #777;text-align: center;color: #fff;margin-left:auto;margin-right: auto;margin-top:10px;width:40px;}
 .quickLink:hover {background-color: #fff;color: #222;}
 .quickPanel a:first-child{margin-top: 20px;}
-.quickPanel{position: absolute;top:0;right:0;width:100%;height:100%;padding:0px;background-color: #2e292f;color: #efefef;display: block;}
+.quickPanel{position: absolute;top:0;right:0;width:100%;height:100%;padding:0px;background-color: #222D32;color: #efefef;display: block;}
 .quickPanel hr{margin: 10px 0px;display: block;height: 1px;border: 0;border-top: 1px solid #555;padding: 0; }
 
-.quickPanel-container{position: fixed;top:0;right:0;width:65px;height:100%;padding:0px;background-color: #2e292f;color: #efefef;display: block;z-index: 999;overflow: auto}
+.quickPanel-container{position: fixed;top:0;right:0;width:65px;height:100%;padding:0px;background-color: #222D32;color: #efefef;display: block;z-index: 999;overflow: auto}

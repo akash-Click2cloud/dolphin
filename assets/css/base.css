@@ -1459,9 +1459,11 @@ button::-moz-focus-inner {
 @media only screen and (min-width: 1170px) {
 }
   .cd-panel h1 {
-    font-size: 1.2em;
+    font-size: 14px;
 	font-weight:normal;	
     margin-top: 20px;
+    color: #638b9b;
+    text-transform: uppercase;
   }
 
 
@@ -1610,7 +1612,11 @@ button::-moz-focus-inner {
 }
 @media only screen and (min-width: 1170px) {
   .cd-panel-header {
-    width: 50%;
+    width: 22.1%;
+    padding-left: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #222D32;
   }
 }
 
@@ -1685,7 +1691,7 @@ button::-moz-focus-inner {
   width: 100%;
   height: 100%;
   top: 0;
-  background: #2D004E;
+  background: #222D32;
   color: #fff;
   z-index: 1;
   -webkit-transition-property: -webkit-transform;

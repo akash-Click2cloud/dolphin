@@ -5,7 +5,7 @@
         <a ui-sref="stacks" ui-sref-active="active" class="animated flipInY delay quickLink" data-toggle="tooltip" data-placement="left" title="Stack"><i class="fa fa-th-list" aria-hidden="true"></i></a>
         <a ui-sref="services" ui-sref-active="active" class="animated flipInY delay quickLink" data-toggle="tooltip" data-placement="left" title="Services"><i class="fa fa-life-ring" aria-hidden="true"></i></a>
         <a ui-sref="containers" ui-sref-active="active" class="animated flipInY delay quickLink" data-toggle="tooltip" data-placement="left" title="Containers"><i class="fa fa-server" aria-hidden="true"></i></a>
-        <a ui-sref="apptocontainer" ui-sref-active="active" class="animated flipInY delay quickLink" data-toggle="tooltip" data-placement="left" title="App to Container"><i class="fa fa-server" aria-hidden="true"></i></a>
+        <a ui-sref="apptocontainer" ui-sref-active="active" class="animated flipInY delay quickLink" data-toggle="tooltip" data-placement="left" title="App to Container"><i class="fa fa-ship" aria-hidden="true"></i></a>
         <a ui-sref="images" ui-sref-active="active" class="animated flipInY delay quickLink" data-toggle="tooltip" data-placement="left" title="Images"><i class="fa fa-clone" aria-hidden="true"></i></a>
         <a ui-sref="networks" ui-sref-active="active" class="animated flipInY delay quickLink" data-toggle="tooltip" data-placement="left" title="Networks"><i class="fa fa-snowflake-o" aria-hidden="true"></i></a>
         <a ui-sref="volumes" ui-sref-active="active" class="animated flipInY delay quickLink" data-toggle="tooltip" data-placement="left" title="Volumes"><i class="fa fa-cubes" aria-hidden="true"></i></a>
@@ -21,14 +21,17 @@
 
 <div class="cd-panel from-right">
     <header class="cd-panel-header">
+        <img ng-if="!logo" src="images/logo.png" class="img-responsive logo ng-scope" alt="Click2Cloud DockM">
         <a href="" class="cd-panel-close">Close</a>
     </header>
     <div class="cd-panel-container">
         <div class="cd-panel-content">
             <div class="innerBox">
-                <p class="cPanelTabs"><a ui-sref="userSettings" class="animated fadeInUp delay current"><i class="fa fa-bars" aria-hidden="true"></i></a><a ui-sref="userSettings" class="animated fadeInUp delay"><i class="fa fa-cog" aria-hidden="true"></i></a><a ui-sref="auth({logout: true})" ui-sref-active="active" class="animated fadeInUp delay"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
-                <h1>DockM</h1>
-                <select class="inputCtl select-endpoint form-control" ng-options="endpoint.Name for endpoint in endpoints" ng-model="activeEndpoint" ng-change="switchEndpoint(activeEndpoint)">
+                <p class="cPanelTabs">
+                    <a ui-sref="userSettings" data-toggle="tooltip" title="My Account" class="animated fadeInUp delay"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                    <a ui-sref="auth({logout: true})" data-toggle="tooltip" title="Logout" class="animated fadeInUp delay"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
+                <h1>Active Endpoint</h1>
+                <select class="inputCtl select-endpoint form-control" style="margin-left: 0px; margin-right: 0px;" ng-options="endpoint.Name for endpoint in endpoints" ng-model="activeEndpoint" ng-change="switchEndpoint(activeEndpoint)">
                 </select>
             </div>
 
@@ -41,7 +44,7 @@
                 <li class="sidebar-list"><a ui-sref="stacks" ui-sref-active="active"><i class="fa fa-th-list" aria-hidden="true"></i>Stack</a></li>
                 <li class="sidebar-list"><a ui-sref="services" ui-sref-active="active"><i class="fa fa-life-ring" aria-hidden="true"></i>Services</a></li>
                 <li class="sidebar-list"><a ui-sref="containers" ui-sref-active="active"><i class="fa fa-server" aria-hidden="true"></i>Containers</a></li>
-                <li class="sidebar-list"><a ui-sref="apptocontainer" ui-sref-active="active"><i class="fa fa-server"></i>App to Container</a></li>
+                <li class="sidebar-list"><a ui-sref="apptocontainer" ui-sref-active="active"><i class="fa fa-ship"></i>App to Container</a></li>
                 <li class="sidebar-list"><a ui-sref="images" ui-sref-active="active"><i class="fa fa-clone" aria-hidden="true"></i>Images</a></li>
                 <li class="sidebar-list"><a ui-sref="networks" ui-sref-active="active"><i class="fa fa-snowflake-o" aria-hidden="true"></i>Networks</a></li>
                 <li class="sidebar-list"><a ui-sref="volumes" ui-sref-active="active"><i class="fa fa-cubes" aria-hidden="true"></i>Volumes</a></li>

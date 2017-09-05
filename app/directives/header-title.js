@@ -15,7 +15,7 @@ angular
     '            <div class="col-md-12">' +
     '                <b class="topTile">{{title}}</b> ' +
     '                <span class="header_title_content" ng-transclude></span> '+
-    '                <a href="" class="hamburger animated fadeInUp delay fa fa-bars"> </a> ' +
+    '                <a href="" title="Menu" class="hamburger animated fadeInUp delay fa fa-bars"> </a> ' +
     '            </div>' +
     '        </div>',
     restrict: 'E'
