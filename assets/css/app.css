@@ -135,8 +135,9 @@ a[ng-click]{
 }
 
 .template-widget-body {
-  max-height: 86%;
-  overflow-y: auto;
+  height: 85%;
+  max-height: 35em;
+    overflow-y: auto;
 }
 
 .template-list {
