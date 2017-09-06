@@ -24,7 +24,7 @@ p{padding: 0px 0px 20px 0px;}
 .cd-panel-content .topLink {display: inline-block;padding:15px;background-color: #643EBF;text-align: center;color: #fff;margin-right:6px;}
 .cd-panel-content .topLink:hover, .cd-panel-content .topLink.current {background-color: #fff;color: #222;}
 
-.cd-panel-content ul.sideLink{padding: 0;margin: 0;}
+.cd-panel-content ul.sideLink{padding: 0;margin: 0; }
 .cd-panel-content ul.sideLink li{padding: 0;margin: 0;}
 .cd-panel-content ul.sideLink a{display: block;color: #fff;padding: 11px 5%;font-size: 13px;}
 .cd-panel-content ul.sideLink a i{margin-right: 20px;}

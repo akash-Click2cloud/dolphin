@@ -20,6 +20,7 @@ type AppToContainerHandler struct {
 	Logger                            *log.Logger
 	authorizeAppToContainerManagement bool
 	AppToContainerService             dockm.AppToContainerService
+	EndpointService					  dockm.EndpointService
 }
 
 const (
@@ -34,7 +35,6 @@ type (
 	GitUrl string `valid:"required"`
 	ImageName string `valid:"required"`
 	EndPointId int `valid:"required"`
-	EndPointUrl string `valid:"required"`
 	 Output string `json:"required"`
 }
 
@@ -44,7 +44,7 @@ type (
 )
 
 // NewEndpointHandler returns a new instance of EndpointHandler.
-func NewAppToContainerHandler(bouncer *security.RequestBouncer, authorizeAppToContainerManagement bool) *AppToContainerHandler {
+func NewAppToContainerHandler(bouncer *security.RequestBouncer, authorizeAppToContainerManagement bool, ) *AppToContainerHandler {
 	h := &AppToContainerHandler{
 		Router: mux.NewRouter(),
 		Logger: log.New(os.Stderr, "", log.LstdFlags),
@@ -82,11 +82,20 @@ func (handler *AppToContainerHandler) handlePostAppToContainer(w http.ResponseWr
 		GitUrl:req.GitUrl,
 		ImageName:req.ImageName,
 		EndPointId:req.EndPointId,
-		EndPointUrl:req.EndPointUrl,
 
 	}
 
-	err , output := handler.AppToContainerService.BuildAppToContainer(atoc)
+	endpoint, err := handler.EndpointService.Endpoint(dockm.EndpointID(atoc.EndPointId))
+
+	if err == dockm.ErrEndpointNotFound {
+		httperror.WriteErrorResponse(w, err, http.StatusNotFound, handler.Logger)
+		return
+	} else if err != nil {
+		httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)
+		return
+	}
+
+	err , output := handler.AppToContainerService.BuildAppToContainer(atoc,endpoint)
 	if err != nil {
 		httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)
 		return

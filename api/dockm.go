@@ -185,7 +185,6 @@ type (
 		GitUrl          string     `json:"GitUrl"`
 		ImageName  		string     `json:"ImageName"`
 		EndPointId  	int        `json:"EndPointId"`
-		EndPointUrl  	string     `json:"EndPointUrl"`
 
 	}
 
@@ -383,7 +382,7 @@ type (
 
 	// EndpointService represents a service for managing endpoint data.
 	AppToContainerService interface {
-		BuildAppToContainer(atoc *AToC) (error , string)
+		BuildAppToContainer(atoc *AToC, endpoint *Endpoint) (error , string)
 	}
 )
 
