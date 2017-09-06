@@ -6,7 +6,7 @@ angular
     scope: {
       title: '@'
     },
-    link: function (scope, iElement, iAttrs) {
+    link: function (scope, iElement, iAttrs ) {
       scope.username = Authentication.getUserDetails().username;
     },
     transclude: true,

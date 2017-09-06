@@ -538,35 +538,6 @@ ul.sidebar .sidebar-list .sidebar-sublist a.active {
 	.blue {
 	  background: #3498db !important;
 }
-/* Sidebar header, footer and body color */
-#sidebar-wrapper {
-  background: #222d32 !important;
-}
-ul.sidebar .sidebar-main a,
-.sidebar-footer,
-ul.sidebar .sidebar-list a:hover,
-#page-wrapper:not(.open) ul.sidebar .sidebar-title.separator {
-	  background: #1a2226 !important;
-}
-ul.sidebar .sidebar-list .sidebar-sublist a.active {
-  background: #1a2226 !important;
-}
-/* Sidebar content color and size */
-ul.sidebar .sidebar-list a {
-	  font-size: 13px !important;
-	  color: #b8c7ce !important;
-}
-/* Sidebar Spliter menu color */
-ul.sidebar .sidebar-title {
-	  color: #4b646f !important;
-}
-/* Sidebar on mouse hover small strip color */
-ul.sidebar .sidebar-list a:hover {
-	  border-left: 3px solid #37B7EE !important;
-}
-#page-wrapper:not(.open) ul.sidebar .sidebar-list a:hover span {
-	  border-left: 3px solid #37B7EE !important;
-}
 /* App template list content style */
 .template-container {
   color: #5D6D7E;
@@ -579,21 +550,6 @@ ul.sidebar .sidebar-list a:hover {
   color: #1a2226 !important;
 }
 /* header style */
-.row.header {
-  background: #37B7EE !important;
-}
-.text-logout {
-  color: #204D74;
-}
-.text-logout:hover {
-  color: #900C3E;
-}
-.text-my-account {
-  color: #204D74;
-}
-.text-my-account:hover {
-  color: #000000;
-}
 .meta .pull-left a {
   color: #154360 !important;
 }
@@ -618,6 +574,7 @@ ul.sidebar .sidebar-list a:hover {
 /*New UI CSS Sapan*/
 body {
   background-color: white !important;
+  font-family: "Montserrat" !important;
 }
 
 .topBar .row > div {
@@ -631,19 +588,16 @@ body {
 .breadcrumb-links {
   font-size: 12px;
   font-weight: bold;
-
 }
 
 .inputCtl {
   padding-left: inherit !important;
 }
+
 .input-group .form-control {
   z-index: inherit !important;
 }
 
-body {
-  font-family: "Montserrat" !important;
-}
 .btn {
   font-size: 12px !important;
 }
@@ -656,10 +610,7 @@ body {
 .dashboard-stats-container .widget .widget-icon {
   border-radius: 0% !important;
 }
-/*.template-widget-body {*/
-  /*max-height: 86% !important;*/
-  /*overflow-y: auto !important;*/
-/*}*/
+
 .template-main .col-sm-12 {
   padding-left: 2rem;
   padding-top: 0.5rem;
