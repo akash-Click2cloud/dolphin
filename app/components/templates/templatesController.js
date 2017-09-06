@@ -122,8 +122,9 @@ function ($scope, $q, $state, $stateParams, $anchorScroll, $filter, ContainerSer
     } else {
       $scope.formValues.network = _.find($scope.availableNetworks, function(o) { return o.Name === 'bridge'; });
     }
-
-    $anchorScroll('view-top');
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    //$anchorScroll('view-top');
   }
 
   function createTemplateConfiguration(template) {

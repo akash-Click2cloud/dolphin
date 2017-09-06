@@ -1,4 +1,7 @@
 angular.module('service', [])
+.run(['$anchorScroll', function($anchorScroll) {
+    $anchorScroll.yOffset = 72;   // always scroll by 50 extra pixels
+}])
 .controller('ServiceController', ['$q', '$scope', '$stateParams', '$state', '$location', '$timeout', '$anchorScroll', 'ServiceService', 'SecretService', 'SecretHelper', 'Service', 'ServiceHelper', 'LabelHelper', 'TaskService', 'NodeService', 'Notifications', 'Pagination', 'ModalService',
 function ($q, $scope, $stateParams, $state, $location, $timeout, $anchorScroll, ServiceService, SecretService, SecretHelper, Service, ServiceHelper, LabelHelper, TaskService, NodeService, Notifications, Pagination, ModalService) {
 
