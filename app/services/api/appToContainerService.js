@@ -8,11 +8,11 @@ angular.module('dockm.services')
             BaseImage: BaseImage,
             GitUrl:GitUrl,
             ImageName:ImageName,
-            EndPointId:'',
-            EndPointUrl:''
+            EndPointId:''
+            //EndPointUrl:''
         };
         atoc.EndPointId = LocalStorage.getEndpointID()
-        atoc.EndPointUrl = LocalStorage.getEndpointPublicURL()
+        //atoc.EndPointUrl = LocalStorage.getEndpointPublicURL()
         return appToContainer.create({}, atoc).$promise;
     };
     // service.appToContainerOutput = function() {

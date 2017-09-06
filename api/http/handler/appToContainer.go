@@ -35,7 +35,6 @@ type (
 	GitUrl string `valid:"required"`
 	ImageName string `valid:"required"`
 	EndPointId int `valid:"required"`
-	EndPointUrl string `valid:"required"`
 	 Output string `json:"required"`
 }
 

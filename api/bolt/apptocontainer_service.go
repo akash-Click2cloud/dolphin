@@ -6,7 +6,7 @@ import (
 	 "strconv"
 
 	"strings"
-	"fmt"
+
 )
 var Output       string
 type AppToContainerService struct {
@@ -32,7 +32,7 @@ func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC, endp
 
 	if strings.HasPrefix(endpoint.URL, "tcp://") &&  endpoint.TLS{
 		comarg = []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName,"--ca",endpoint.TLSCACertPath,"--cert",endpoint.TLSCertPath,"--key",endpoint.TLSKeyPath,"--tls",strconv.FormatBool(endpoint.TLS), "--url",endpoint.URL}
-	}else if strings.HasPrefix(endpoint.URL, "unix://") {
+	}else /*if strings.HasPrefix(endpoint.URL, "unix://")*/ {
 		comarg = []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName}
 	}
 
@@ -43,6 +43,7 @@ func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC, endp
 	var outb, errb bytes.Buffer
 	cmd.Stdout = &outb
 	cmd.Stderr = &errb
+
 	err := cmd.Run()
 	stdout:=outb.String()
 	stderr:=errb.String()
@@ -50,7 +51,7 @@ func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC, endp
 		Output=stdout+stderr
 	}
 	Output=stdout+stderr
-	fmt.Println(Output)
+
 	return err ,Output
 }
 //func (service *AppToContainerService) OutputData () string{
