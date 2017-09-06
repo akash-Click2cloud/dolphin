@@ -6,15 +6,13 @@ import (
 	 "strconv"
 
 	"strings"
+	"errors"
 
 )
 var Output       string
 type AppToContainerService struct {
 	store *Store
 }
-
-var endpoint *dockm.Endpoint
-var endpointErr error
 
 // CreateEndpoint assign an ID to a new endpoint and saves it.
 
@@ -47,12 +45,15 @@ func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC, endp
 	err := cmd.Run()
 	stdout:=outb.String()
 	stderr:=errb.String()
-	if err != nil {
-		Output=stdout+stderr
-	}
 	Output=stdout+stderr
+	var customError error = nil
+	if err != nil {
+		//Output=stdout+stderr
+		customError = errors.New(Output)
+	}
 
-	return err ,Output
+
+	return customError ,Output
 }
 //func (service *AppToContainerService) OutputData () string{
 //         return  Output

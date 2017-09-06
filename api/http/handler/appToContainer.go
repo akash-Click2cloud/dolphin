@@ -12,6 +12,7 @@ import (
 	"github.com/asaskevich/govalidator"
 	"github.com/gorilla/mux"
 
+	"fmt"
 )
 
 // AppToContainerHandler represents an HTTP API handler for managing AppToContainer
@@ -96,8 +97,9 @@ func (handler *AppToContainerHandler) handlePostAppToContainer(w http.ResponseWr
 	}
 
 	err , output := handler.AppToContainerService.BuildAppToContainer(atoc,endpoint)
+	fmt.Println(output)
 	if err != nil {
-		httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)
+		httperror.WriteErrorResponse(w, err, http.StatusBadRequest, handler.Logger)
 		return
 	}
 

@@ -616,3 +616,7 @@ body {
   padding-top: 0.5rem;
   line-height: 1.4;
 }
+
+#atoc_input_form label:first-child {
+  padding-right: 10px !important;
+}

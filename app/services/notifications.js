@@ -9,7 +9,9 @@ angular.module('dockm.services')
 
   service.error = function(title, e, fallbackText) {
     var msg = fallbackText;
-    if (e.data && e.data.message) {
+    if (e === '') {
+      console.log('') ;
+    } else if (e.data && e.data.message) {
       msg = e.data.message;
     } else if (e.message) {
       msg = e.message;
@@ -24,6 +26,8 @@ angular.module('dockm.services')
     }
     toastr.error($sanitize(msg), $sanitize(title), {timeOut: 6000});
   };
+
+
 
   return service;
 }]);

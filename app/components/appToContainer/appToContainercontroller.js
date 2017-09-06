@@ -20,6 +20,7 @@ angular.module('appToContainer', [])
             //$scope.builderImage = ['centos/python-35-centos7','click2cloud/perl-516-centos7','click2cloud/nodejs-010-centos7','click2cloud/ruby-20-centos7','click2cloud/php-55-centos7'];
 
             $scope.buildApptocontainer = function() {
+                    $('#atocBuildSpinner').show();
                     var BaseImage = $scope.formValues.BaseImage;
                     if (BaseImage in $scope.builderImages) {
                         BaseImage = $scope.builderImages[BaseImage];
@@ -32,13 +33,14 @@ angular.module('appToContainer', [])
                          console.log($scope.appToContainerlogs);
                         Notifications.success('Image created', name);
                         //$state.reload();
-                    }, function error(err) {
-                        $scope.state.uploadInProgress = false;
-                        $scope.state.error = err.msg;
-                    }, function update(evt) {
-                        if (evt.upload) {
-                            $scope.state.uploadInProgress = evt.upload;
-                        }
-                    });
+                    })
+                     .catch(function error(err) {
+                         Notifications.error('Failure','', 'App to Container Image Build failed');
+                         $scope.appToContainerlogs = err.data.err;
+
+                     })
+                     .finally(function final() {
+                         $('#atocBuildSpinner').hide();
+                     });
             };
         }]);

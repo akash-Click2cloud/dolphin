@@ -85,6 +85,12 @@ const (
 	ErrUndefinedTLSFileType = Error("Undefined TLS file type")
 )
 
+// ApptoContainer errors
+const (
+	ErrUndefinedTLSFileTyp = Error("Undefined TLS file type")
+)
+
+
 // Error represents an application error.
 type Error string
 
