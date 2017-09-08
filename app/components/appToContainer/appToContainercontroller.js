@@ -8,7 +8,6 @@ angular.module('appToContainer', [])
                 GitUrl: '',
                 ImageName: ''
             };
-
             $scope.builderImages = {
                 'Click2Cloud Python Builder Image' :  'click2cloud/python-33-centos7',
                 'Click2Cloud NodeJs Builder Image'  :   'click2cloud/nodejs-010-centos7',
@@ -16,11 +15,14 @@ angular.module('appToContainer', [])
                 'Click2Cloud PHP Builder Image'  :   'click2cloud/php-55-centos7',
                 'Click2Cloud Perl Builder Image'  :   'click2cloud/perl-516-centos7'
             };
+            $scope.isbisabled=false;
 
             //$scope.builderImage = ['centos/python-35-centos7','click2cloud/perl-516-centos7','click2cloud/nodejs-010-centos7','click2cloud/ruby-20-centos7','click2cloud/php-55-centos7'];
 
             $scope.buildApptocontainer = function() {
                     $('#atocBuildSpinner').show();
+                    $('#notify').show();
+                    $scope.isbisabled=true;
                     var BaseImage = $scope.formValues.BaseImage;
                     if (BaseImage in $scope.builderImages) {
                         BaseImage = $scope.builderImages[BaseImage];
@@ -41,6 +43,9 @@ angular.module('appToContainer', [])
                      })
                      .finally(function final() {
                          $('#atocBuildSpinner').hide();
+                         $('#notify').hide();
+                         $scope.isbisabled=false;
                      });
+                    $scope.appToContainerlogs = '';
             };
         }]);
