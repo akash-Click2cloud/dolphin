@@ -158,7 +158,7 @@ a[ng-click]{
   /*padding-left: 0.7rem;*/
   /*margin-bottom: 0.7rem;*/
   cursor: pointer;
-  border: 1px solid #333333;
+  border: 2px solid #D3D5D6;
   border-radius: 2px;
   box-shadow: 0 3px 10px -2px rgba(161, 170, 166, 0.5);
 }
@@ -283,7 +283,8 @@ a[ng-click]{
 }
 
 .select-endpoint {
-  width: 80%;
+  width: 70%;
+  height: 27px;
   margin: 0 auto;
 }
 
@@ -556,13 +557,13 @@ ul.sidebar .sidebar-list .sidebar-sublist a.active {
 }
 /* header refresh and spin image */
 .header-refresh {
-	  color: #337AB7;
+  color: #FFFFFF;
 }
 .header-refresh:hover {
-    color: #204D74;
+  color: #03A9F4;
 }
 .header-spin {
-	  color: #204D74;
+  color: #03A9F4;
 }
 /*.meta, .widget {
   margin-left: 7px !important;
