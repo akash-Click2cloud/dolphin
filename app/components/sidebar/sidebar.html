@@ -22,12 +22,12 @@
 <div class="cd-panel from-right" >
     <header class="cd-panel-header">
         <!--<img ng-if="!logo" src="images/logo.png" class="img-responsive logo ng-scope" alt="Click2Cloud DockM">-->
-        <h2 style="color:#03A9F4; font-family: sans-serif; font-size: 16px; font-weight: bold; margin:0px; padding-left: 11px;">Click2Cloud DockM</h2>
+        <h2 style="color:#03A9F4; background-color: #222D32; font-family: sans-serif; font-size: 1.0em; font-weight: bold; margin:0px; padding-left: 4%;">Click2Cloud DockM</h2>
         <a href="" class="cd-panel-close">Close</a>
     </header>
     <div class="cd-panel-container">
         <div class="cd-panel-content">
-            <div class="innerBox">
+            <div class="innerBox" style="direction: ltr;">
                 <p class="cPanelTabs">
                     <a ui-sref="userSettings" data-toggle="tooltip" title="My Account" class="animated fadeInUp delay"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                     <a ui-sref="auth({logout: true})" data-toggle="tooltip" title="Logout" class="animated fadeInUp delay"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
@@ -36,8 +36,8 @@
                 </select>
             </div>
 
-            <h1 class="innerBox">Endpoint Actions</h1>
-            <ul class="sideLink">
+            <h1 class="innerBox" style="direction: ltr;">Endpoint Actions</h1>
+            <ul class="sideLink" style="direction: ltr;">
                 <li class="sidebar-list"><a ui-sref="dashboard" ui-sref-active="active"><i class="fa fa-th" aria-hidden="true" style="width:15px"></i><span>Dashboard</span></a></li>
                 <li class="sidebar-list"><a ui-sref="templates" ui-sref-active="active"><i class="fa fa-space-shuttle" aria-hidden="true" style="width:15px"></i><span>App Templates</span></a></li>
                 <!--<li class="sidebar-sublist"><a ui-sref="templates_linuxserver" ui-sref-active="active" ng-if="toggle && displayExternalContributors && ($state.current.name === 'templates' || $state.current.name === 'templates_linuxserver')"><i aria-hidden="true"></i>   LinuxServer.io</a></li>-->
@@ -52,8 +52,8 @@
                 <li ng-if="applicationState.endpoint.apiVersion >= 1.25 && applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE'" class="sidebar-list"><a ui-sref="secrets" ui-sref-active="active"><i class="fa fa-user-secret" aria-hidden="true" style="width:15px"></i><span>Secrets</span></a></li>
                 <li ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM' || (applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER')" class="sidebar-list"><a ui-sref="swarm" ui-sref-active="active"><i class="fa fa-object-group" aria-hidden="true" style="width:15px"></i><span>Swarm</span></a></li>
             </ul>
-            <h1 ng-if="!applicationState.application.authentication || isAdmin || isTeamLeader" class="innerBox">DockM Settings</h1>
-            <ul class="sideLink">
+            <h1 ng-if="!applicationState.application.authentication || isAdmin || isTeamLeader" class="innerBox" style="direction: ltr;">DockM Settings</h1>
+            <ul class="sideLink" style="direction: ltr;">
                 <li ng-if="applicationState.application.authentication && (isAdmin || isTeamLeader)" class="sidebar-list"><a ui-sref="users" ui-sref-active="active"><i class="fa fa-users" aria-hidden="true" style="width:15px"></i><span>User management</span></a></li>
                 <li ng-if="applicationState.application.authentication && (isAdmin || isTeamLeader)" class="sidebar-sublist"><a ui-sref="teams" ui-sref-active="active"><i aria-hidden="true" style="width:21px"></i><span>Teams</span></a></li>
                 <li ng-if="!applicationState.application.authentication || isAdmin" class="sidebar-list"><a ui-sref="endpoints" ui-sref-active="active"><i class="fa fa-plug" aria-hidden="true" style="width:15px"></i><span>Endpoints</span></a></li>
