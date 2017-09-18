@@ -34,7 +34,7 @@ func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC, endp
 		comarg = []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName}
 	}
 
-
+    Jenkins_CICD()
 	//comarg := []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName,"--ca",TLSCaPath,"--cert",TLSCertPath,"--key",TLkeyPath,"--tls",TLS, "--url",DockerURL}
 	//comarg := []string{"build",atoc.GitUrl,atoc.BaseImage,atoc.ImageName,"--ca",endpoint.TLSCACertPath,"--cert",endpoint.TLSCertPath,"--key",endpoint.TLSKeyPath,"--tls",strconv.FormatBool(endpoint.TLS), "--url",endpoint.URL}
 	cmd := exec.Command(command,comarg...)
@@ -55,6 +55,3 @@ func (service *AppToContainerService) BuildAppToContainer(atoc *dockm.AToC, endp
 
 	return customError ,Output
 }
-//func (service *AppToContainerService) OutputData () string{
-//         return  Output
-//	}
