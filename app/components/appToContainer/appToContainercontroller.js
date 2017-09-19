@@ -13,7 +13,9 @@ angular.module('appToContainer', [])
                 'Click2Cloud NodeJs Builder Image'  :   'click2cloud/nodejs-010-centos7',
                 'Click2Cloud Ruby Builder Image'  :   'click2cloud/ruby-20-centos7',
                 'Click2Cloud PHP Builder Image'  :   'click2cloud/php-55-centos7',
-                'Click2Cloud Perl Builder Image'  :   'click2cloud/perl-516-centos7'
+                'Click2Cloud Perl Builder Image'  :   'click2cloud/perl-516-centos7',
+                'Click2Cloud .NET Core Builder Image' : 'click2cloud/aspnet-core-centos7',
+                'Click2Cloud .NET 4.5 Builder Image' : 'click2cloud/aspnet-4.5-centos7'
             };
             $scope.isbisabled=false;
 
