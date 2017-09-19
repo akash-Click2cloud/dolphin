@@ -255,7 +255,7 @@ func main() {
 		SSLKey:                 *flags.SSLKey,
 	}
 
-	log.Printf("Starting dockm on %s", *flags.Addr)
+	log.Printf("Starting dockm %s on %s",dockm.APIVersion, *flags.Addr)
 	err = server.Start()
 	if err != nil {
 		log.Fatal(err)
