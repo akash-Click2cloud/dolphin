@@ -3,6 +3,21 @@ angular.module('dockm.services')
         'use strict';
         var service = {};
 
+        service.container = function(id) {
+            var deferred = $q.defer();
+
+            Container.get({ id: id }).$promise
+                .then(function success(data) {
+                    var container = new ContainerDetailsViewModel(data);
+                    deferred.resolve(container);
+                })
+                .catch(function error(err) {
+                    deferred.reject({ msg: 'Unable to retrieve container information', err: err });
+                });
+
+            return deferred.promise;
+        };
+
         service.containers = function(all) {
             var deferred = $q.defer();
             Container.query({ all: all }).$promise
@@ -11,7 +26,7 @@ angular.module('dockm.services')
                     deferred.resolve(containers);
                 })
                 .catch(function error(err) {
-                    deferred.reject({ msg: 'Unable to retriever containers', err: err });
+                    deferred.reject({ msg: 'Unable to retrieve containers', err: err });
                 });
             return deferred.promise;
         };
@@ -104,6 +119,34 @@ angular.module('dockm.services')
 
             return deferred.promise;
         };
+        service.containerStats = function(id) {
+            var deferred = $q.defer();
 
+            Container.stats({id: id}).$promise
+                .then(function success(data) {
+                    var containerStats = new ContainerStatsViewModel(data);
+                    deferred.resolve(containerStats);
+                })
+                .catch(function error(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        };
+
+        service.containerTop = function(id) {
+            var deferred = $q.defer();
+
+            Container.top({id: id}).$promise
+                .then(function success(data) {
+                    var containerTop = data;
+                    deferred.resolve(containerTop);
+                })
+                .catch(function error(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        };
         return service;
     }]);

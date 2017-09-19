@@ -23,6 +23,7 @@ angular.module('dockm', [
   'container',
   'containerConsole',
   'containerLogs',
+  'containerStats',
   'serviceLogs',
   'containers',
   'createContainer',
@@ -60,7 +61,6 @@ angular.module('dockm', [
   'settings',
   'settingsAuthentication',
   'sidebar',
-  'stats',
   'swarm',
   'task',
   'team',
@@ -164,8 +164,8 @@ angular.module('dockm', [
       url: '^/containers/:id/stats',
       views: {
         'content@': {
-          templateUrl: 'app/components/stats/stats.html',
-          controller: 'StatsController'
+        templateUrl: 'app/components/containerStats/containerStats.html',
+        controller: 'ContainerStatsController'
         },
         'sidebar@': {
           templateUrl: 'app/components/sidebar/sidebar.html',
