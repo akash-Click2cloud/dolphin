@@ -82,6 +82,7 @@ type (
 	}
 
 	postAdminInitRequest struct {
+		Username string `valid:"required"`
 		Password string `valid:"required"`
 	}
 )
@@ -357,10 +358,14 @@ func (handler *UserHandler) handlePostAdminInit(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	user, err := handler.UserService.UserByUsername("admin")
-	if err == dockm.ErrUserNotFound {
+	users, err := handler.UserService.UsersByRole(dockm.AdministratorRole)
+		if err != nil {
+				httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)
+				return
+			}
+		if len(users) == 0 {
 		user := &dockm.User{
-			Username: "admin",
+			Username: req.Username,
 			Role:     dockm.AdministratorRole,
 		}
 		user.Password, err = handler.CryptoService.Hash(req.Password)
@@ -374,11 +379,7 @@ func (handler *UserHandler) handlePostAdminInit(w http.ResponseWriter, r *http.R
 			httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)
 			return
 		}
-	} else if err != nil {
-	httperror.WriteErrorResponse(w, dockm.ErrAdminAlreadyInitialized, http.StatusConflict, handler.Logger)
-		return
-	}
-	if user != nil {
+	} else {
 		httperror.WriteErrorResponse(w, dockm.ErrAdminAlreadyInitialized, http.StatusForbidden, handler.Logger)
 		return
 	}
@@ -394,6 +395,21 @@ func (handler *UserHandler) handleDeleteUser(w http.ResponseWriter, r *http.Requ
 		httperror.WriteErrorResponse(w, err, http.StatusBadRequest, handler.Logger)
 		return
 	}
+	if userID == 1 {
+				httperror.WriteErrorResponse(w, dockm.ErrCannotRemoveAdmin, http.StatusForbidden, handler.Logger)
+				return
+			}
+
+			tokenData, err := security.RetrieveTokenData(r)
+		if err != nil {
+				httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)
+				return
+			}
+
+			if tokenData.ID == dockm.UserID(userID) {
+				httperror.WriteErrorResponse(w, dockm.ErrAdminCannotRemoveSelf, http.StatusForbidden, handler.Logger)
+				return
+			}
 
 	_, err = handler.UserService.User(dockm.UserID(userID))
 

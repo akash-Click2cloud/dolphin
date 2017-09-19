@@ -38,7 +38,11 @@
   </head>
 
 <body ng-controller="MainController">
-<div id="page-wrapperr" ng-class="{open: toggle && $state.current.name !== 'auth' && $state.current.name !== 'endpointInit' && $state.current.name !== 'init', nopadding: $state.current.name === 'auth' || $state.current.name === 'endpointInit' || $state.current.name === 'init' || applicationState.loading }" ng-cloak>
+<div id="page-wrapperr" ng-class="{
+    open: toggle && ['auth', 'init', 'init.endpoint', 'init.admin'].indexOf($state.current.name) === -1,
+    nopadding: ['auth', 'init', 'init.endpoint', 'init.admin'].indexOf($state.current.name) > -1 || applicationState.loading
+  }"
+     ng-cloak>
 
 
   <div class="page-wrapper" ng-if="applicationState.loading">
