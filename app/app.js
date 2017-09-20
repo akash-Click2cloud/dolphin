@@ -33,7 +33,7 @@ angular.module('dockm', [
   'createService',
   'createStack',
   'createVolume',
-  'docker',
+  'engine',
   'endpoint',
   'appToContainer',
   'endpointAccess',
@@ -370,12 +370,12 @@ angular.module('dockm', [
                 }
           })
 
-    .state('docker', {
-      url: '/docker/',
+    .state('engine', {
+      url: '/engine/',
       views: {
         'content@': {
-          templateUrl: 'app/components/docker/docker.html',
-          controller: 'DockerController'
+          templateUrl: 'app/components/engine/engine.html',
+          controller: 'EngineController'
         },
         'sidebar@': {
           templateUrl: 'app/components/sidebar/sidebar.html',
