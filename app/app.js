@@ -62,6 +62,7 @@ angular.module('dockm', [
   'settingsAuthentication',
   'sidebar',
   'swarm',
+  'swarmVisualizer',
   'task',
   'team',
   'teams',
@@ -819,7 +820,7 @@ angular.module('dockm', [
       }
     })
     .state('swarm', {
-      url: '/swarm/',
+      url: '/swarm',
       views: {
         'content@': {
           templateUrl: 'app/components/swarm/swarm.html',
@@ -844,6 +845,21 @@ angular.module('dockm', [
             }
         }
     })
+        .state('swarm.visualizer', {
+            url: '/visualizer',
+            views: {
+                'content@': {
+                    templateUrl: 'app/components/swarmVisualizer/swarmVisualizer.html',
+                    controller: 'SwarmVisualizerController'
+                },
+                'sidebar@': {
+                    templateUrl: 'app/components/sidebar/sidebar.html',
+                    controller: 'SidebarController'
+                }
+            }
+        })
+    ;
+
   }])
   .run(['$rootScope', '$state', 'Authentication', 'authManager', 'StateManager', 'EndpointProvider', 'Notifications', 'Analytics', function ($rootScope, $state, Authentication, authManager, StateManager, EndpointProvider, Notifications, Analytics) {
     EndpointProvider.initialize();
