@@ -1,5 +1,5 @@
 angular
-.module('portainer')
+.module('dockm')
 .directive('autoFocus', ['$timeout', function porAutoFocus($timeout) {
   var directive = {
     restrict: 'A',

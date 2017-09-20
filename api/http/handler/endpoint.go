@@ -14,7 +14,6 @@ import (
 
 	"github.com/asaskevich/govalidator"
 	"github.com/gorilla/mux"
-	"github.com/portainer/portainer/api"
 )
 
 // EndpointHandler represents an HTTP API handler for managing Docker endpoints.
@@ -378,7 +377,7 @@ func (handler *EndpointHandler) handleDeleteEndpoint(w http.ResponseWriter, r *h
 		return
 	}
 
-	if endpoint.TLSConfig {
+	if endpoint.TLSConfig.TLS {
 		err = handler.FileService.DeleteTLSFiles(id)
 		if err != nil {
 			httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)

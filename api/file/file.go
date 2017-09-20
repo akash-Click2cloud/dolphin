@@ -8,7 +8,7 @@ import (
 	"io"
 	"os"
 	"path"
-	"github.com/portainer/portainer/api"
+
 )
 
 const (
@@ -166,17 +166,17 @@ func (service *Service) DeleteTLSFiles(folder string) error {
 }
 
 // DeleteTLSFile deletes a specific TLS file from a folder.
-func (service *Service) DeleteTLSFile(folder string, fileType portainer.TLSFileType) error {
+func (service *Service) DeleteTLSFile(folder string, fileType dockm.TLSFileType) error {
 	var fileName string
 	switch fileType {
-	case portainer.TLSFileCA:
+	case dockm.TLSFileCA:
 		fileName = TLSCACertFile
-	case portainer.TLSFileCert:
+	case dockm.TLSFileCert:
 		fileName = TLSCertFile
-	case portainer.TLSFileKey:
+	case dockm.TLSFileKey:
 		fileName = TLSKeyFile
 	default:
-		return portainer.ErrUndefinedTLSFileType
+		return dockm.ErrUndefinedTLSFileType
 	}
 
 	filePath := path.Join(service.fileStorePath, TLSStorePath, folder, fileName)
