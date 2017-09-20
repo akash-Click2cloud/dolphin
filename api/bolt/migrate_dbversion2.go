@@ -2,7 +2,7 @@ package bolt
 
 import "github.com/akash-Click2cloud/dolphin/api"
 
-func (m *Migrator) updateSettingsToVersion3() error {
+func (m *Migrator) updateSettingsToDBVersion3() error {
 	legacySettings, err := m.SettingsService.Settings()
 	if err != nil {
 		return err

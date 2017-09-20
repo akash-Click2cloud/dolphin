@@ -14,6 +14,7 @@ import (
 
 	"github.com/asaskevich/govalidator"
 	"github.com/gorilla/mux"
+	"github.com/portainer/portainer/api"
 )
 
 // EndpointHandler represents an HTTP API handler for managing Docker endpoints.
@@ -57,10 +58,12 @@ func NewEndpointHandler(bouncer *security.RequestBouncer, authorizeEndpointManag
 
 type (
 	postEndpointsRequest struct {
-		Name      string `valid:"required"`
-		URL       string `valid:"required"`
-		PublicURL string `valid:"-"`
-		TLS       bool
+		Name               string `valid:"required"`
+		URL                 string `valid:"required"`
+		PublicURL           string `valid:"-"`
+		TLS                 bool
+		TLSSkipVerify       bool
+		TLSSkipClientVerify bool
 	}
 
 	postEndpointsResponse struct {
@@ -73,10 +76,12 @@ type (
 	}
 
 	putEndpointsRequest struct {
-		Name      string `valid:"-"`
-		URL       string `valid:"-"`
-		PublicURL string `valid:"-"`
-		TLS       bool   `valid:"-"`
+		Name                string `valid:"-"`
+		URL                 string `valid:"-"`
+		PublicURL           string `valid:"-"`
+		TLS                 bool   `valid:"-"`
+		TLSSkipVerify       bool   `valid:"-"`
+		TLSSkipClientVerify bool   `valid:"-"`
 	}
 )
 // handleGetEndpoints handles GET requests on /endpoints
@@ -122,10 +127,13 @@ func (handler *EndpointHandler) handlePostEndpoints(w http.ResponseWriter, r *ht
 	}
 
 	endpoint := &dockm.Endpoint{
-		Name:            req.Name,
-		URL:             req.URL,
-		PublicURL:       req.PublicURL,
-		TLS:             req.TLS,
+		Name:      req.Name,
+		URL:       req.URL,
+		PublicURL: req.PublicURL,
+		TLSConfig: dockm.TLSConfiguration{
+			TLS:           req.TLS,
+			TLSSkipVerify: req.TLSSkipVerify,
+		},
 		AuthorizedUsers: []dockm.UserID{},
 		AuthorizedTeams: []dockm.TeamID{},
 	}
@@ -138,12 +146,18 @@ func (handler *EndpointHandler) handlePostEndpoints(w http.ResponseWriter, r *ht
 
 	if req.TLS {
 	 folder := strconv.Itoa(int(endpoint.ID))
-		caCertPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileCA)
-		endpoint.TLSCACertPath = caCertPath
-		certPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileCert)
-		endpoint.TLSCertPath = certPath
-		keyPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileKey)
-		endpoint.TLSKeyPath = keyPath
+		if !req.TLSSkipVerify {
+			caCertPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileCA)
+			endpoint.TLSConfig.TLSCACertPath = caCertPath
+		}
+
+		if !req.TLSSkipClientVerify {
+			certPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileCert)
+			endpoint.TLSConfig.TLSCertPath = certPath
+			keyPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileKey)
+			endpoint.TLSConfig.TLSKeyPath = keyPath
+		}
+
 		err = handler.EndpointService.UpdateEndpoint(endpoint.ID, endpoint)
 		if err != nil {
 			httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)
@@ -283,18 +297,33 @@ func (handler *EndpointHandler) handlePutEndpoint(w http.ResponseWriter, r *http
 
 	folder := strconv.Itoa(int(endpoint.ID))
   if req.TLS {
-		endpoint.TLS = true
-		caCertPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileCA)
-		endpoint.TLSCACertPath = caCertPath
-		certPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileCert)
-		endpoint.TLSCertPath = certPath
-		keyPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileKey)
-		endpoint.TLSKeyPath = keyPath
-	} else {
-		endpoint.TLS = false
-		endpoint.TLSCACertPath = ""
-		endpoint.TLSCertPath = ""
-		endpoint.TLSKeyPath = ""
+	  endpoint.TLSConfig.TLS = true
+	  endpoint.TLSConfig.TLSSkipVerify = req.TLSSkipVerify
+	  if !req.TLSSkipVerify {
+		  caCertPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileCA)
+		  endpoint.TLSConfig.TLSCACertPath = caCertPath
+	  } else {
+		  endpoint.TLSConfig.TLSCACertPath = ""
+		  handler.FileService.DeleteTLSFile(folder, dockm.TLSFileCA)
+	  }
+
+	  if !req.TLSSkipClientVerify {
+		  certPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileCert)
+		  endpoint.TLSConfig.TLSCertPath = certPath
+		  keyPath, _ := handler.FileService.GetPathForTLSFile(folder, dockm.TLSFileKey)
+		  endpoint.TLSConfig.TLSKeyPath = keyPath
+	  } else {
+		  endpoint.TLSConfig.TLSCertPath = ""
+		  handler.FileService.DeleteTLSFile(folder, dockm.TLSFileCert)
+		  endpoint.TLSConfig.TLSKeyPath = ""
+		  handler.FileService.DeleteTLSFile(folder, dockm.TLSFileKey)
+	  }
+	  } else {
+	  endpoint.TLSConfig.TLS = false
+	  endpoint.TLSConfig.TLSSkipVerify = true
+	  endpoint.TLSConfig.TLSCACertPath = ""
+	  endpoint.TLSConfig.TLSCertPath = ""
+	  endpoint.TLSConfig.TLSKeyPath = ""
 		err = handler.FileService.DeleteTLSFiles(folder)
 		if err != nil {
 			httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)
@@ -349,7 +378,7 @@ func (handler *EndpointHandler) handleDeleteEndpoint(w http.ResponseWriter, r *h
 		return
 	}
 
-	if endpoint.TLS {
+	if endpoint.TLSConfig {
 		err = handler.FileService.DeleteTLSFiles(id)
 		if err != nil {
 			httperror.WriteErrorResponse(w, err, http.StatusInternalServerError, handler.Logger)

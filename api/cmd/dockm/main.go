@@ -13,6 +13,7 @@ import (
 	"github.com/akash-Click2cloud/dolphin/api/libcompose"
 
 	"log"
+
 )
 
 func initCLI() *dockm.CLIFlags {
@@ -198,12 +199,15 @@ func main() {
 		}
 		if len(endpoints) == 0 {
 			endpoint := &dockm.Endpoint{
-				Name:            "primary",
-				URL:             *flags.Endpoint,
-				TLS:             *flags.TLSVerify,
-				TLSCACertPath:   *flags.TLSCacert,
-				TLSCertPath:     *flags.TLSCert,
-				TLSKeyPath:      *flags.TLSKey,
+				Name: "primary",
+				URL:  *flags.Endpoint,
+				TLSConfig: dockm.TLSConfiguration{
+					TLS:           *flags.TLSVerify,
+					TLSSkipVerify: false,
+					TLSCACertPath: *flags.TLSCacert,
+					TLSCertPath:   *flags.TLSCert,
+					TLSKeyPath:    *flags.TLSKey,
+				},
 				AuthorizedUsers: []dockm.UserID{},
 				AuthorizedTeams: []dockm.TeamID{},
 			}

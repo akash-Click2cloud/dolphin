@@ -4,31 +4,37 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"io/ioutil"
+	"github.com/akash-Click2cloud/dolphin/api"
 )
 
 // CreateTLSConfiguration initializes a tls.Config using a CA certificate, a certificate and a key
-func CreateTLSConfiguration(caCertPath, certPath, keyPath string, skipTLSVerify bool) (*tls.Config, error) {
+func CreateTLSConfiguration(config *dockm.TLSConfiguration) (*tls.Config, error) {
+	TLSConfig := &tls.Config{}
 
-	config := &tls.Config{}
 
-	if certPath != "" && keyPath != "" {
- 	  cert, err := tls.LoadX509KeyPair(certPath, keyPath)
-		if err != nil {
-			return nil, err
+	if config.TLS {
+		if config.TLSCertPath != "" && config.TLSKeyPath != "" {
+			cert, err := tls.LoadX509KeyPair(config.TLSCertPath, config.TLSKeyPath)
+			if err != nil {
+				return nil, err
+			}
+
+			TLSConfig.Certificates = []tls.Certificate{cert}
 		}
- 	  config.Certificates = []tls.Certificate{cert}
-	}
-	if caCertPath != "" {
-		caCert, err := ioutil.ReadFile(caCertPath)
-		if err != nil {
-			return nil, err
+
+		if !config.TLSSkipVerify {
+			caCert, err := ioutil.ReadFile(config.TLSCACertPath)
+			if err != nil {
+				return nil, err
+			}
+
+			caCertPool := x509.NewCertPool()
+			caCertPool.AppendCertsFromPEM(caCert)
+
+			TLSConfig.RootCAs = caCertPool
 		}
-		caCertPool := x509.NewCertPool()
-		caCertPool.AppendCertsFromPEM(caCert)
-		config.RootCAs = caCertPool
+		TLSConfig.InsecureSkipVerify = config.TLSSkipVerify
 	}
- 
-    config.InsecureSkipVerify = skipTLSVerify
- 
-	return config, nil
+
+	return TLSConfig, nil
 }
