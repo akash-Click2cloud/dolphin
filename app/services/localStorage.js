@@ -61,6 +61,16 @@ angular.module('dockm.services')
     },
     clean: function() {
       localStorageService.clearAll();
+    },
+      storeFilterContainerShowAll: function(filter) {
+          localStorageService.cookie.set('filter_containerShowAll', filter);
+      },
+      getFilterContainerShowAll: function() {
+          var filter = localStorageService.cookie.get('filter_containerShowAll');
+          if (filter === null) {
+              filter = true;
+          }
+          return filter;
     }
   };
 }]);
