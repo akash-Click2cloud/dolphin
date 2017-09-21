@@ -1,6 +1,8 @@
 package proxy
 
-import "github.com/akash-Click2cloud/dolphin/api"
+import (
+	"github.com/akash-Click2cloud/dolphin/api"
+)
 
 
 // filterVolumeList loops through all volumes, filters volumes without any resource control (public resources) or with
@@ -134,4 +136,29 @@ func filterNetworkList(networkData []interface{}, resourceControls []dockm.Resou
 	}
 
 	return filteredNetworkData, nil
+}
+
+// filterSecretList loops through all secrets, filters secrets without any resource control (public resources) or with
+// any resource control giving access to the user (these secrets will be decorated).
+// Secret object schema reference: https://docs.docker.com/engine/api/v1.28/#operation/SecretList
+func filterSecretList(secretData []interface{}, resourceControls []dockm.ResourceControl, userID dockm.UserID, userTeamIDs []dockm.TeamID) ([]interface{}, error) {
+	filteredSecretData := make([]interface{}, 0)
+
+	for _, secret := range secretData {
+		secretObject := secret.(map[string]interface{})
+		if secretObject[secretIdentifier] == nil {
+			return nil, ErrDockerSecretIdentifierNotFound
+		}
+
+		secretID := secretObject[secretIdentifier].(string)
+		resourceControl := getResourceControlByResourceID(secretID, resourceControls)
+		if resourceControl == nil {
+			filteredSecretData = append(filteredSecretData, secretObject)
+		} else if resourceControl != nil && canUserAccessResource(userID, userTeamIDs, resourceControl) {
+			secretObject = decorateObject(secretObject, resourceControl)
+			filteredSecretData = append(filteredSecretData, secretObject)
+		}
+	}
+
+	return filteredSecretData, nil
 }

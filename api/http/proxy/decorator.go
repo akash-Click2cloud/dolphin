@@ -1,6 +1,8 @@
 package proxy
 
-import "github.com/akash-Click2cloud/dolphin/api"
+import (
+	"github.com/akash-Click2cloud/dolphin/api"
+)
 
 
 // decorateVolumeList loops through all volumes and will decorate any volume with an existing resource control.
@@ -105,6 +107,30 @@ func decorateNetworkList(networkData []interface{}, resourceControls []dockm.Res
 	}
 
 	return decoratedNetworkData, nil
+}
+
+// decorateSecretList loops through all secrets and will decorate any secret with an existing resource control.
+// Secret object schema reference: https://docs.docker.com/engine/api/v1.28/#operation/SecretList
+func decorateSecretList(secretData []interface{}, resourceControls []dockm.ResourceControl) ([]interface{}, error) {
+	decoratedSecretData := make([]interface{}, 0)
+
+	for _, secret := range secretData {
+
+		secretObject := secret.(map[string]interface{})
+		if secretObject[secretIdentifier] == nil {
+			return nil, ErrDockerSecretIdentifierNotFound
+		}
+
+		secretID := secretObject[secretIdentifier].(string)
+		resourceControl := getResourceControlByResourceID(secretID, resourceControls)
+		if resourceControl != nil {
+			secretObject = decorateObject(secretObject, resourceControl)
+		}
+
+		decoratedSecretData = append(decoratedSecretData, secretObject)
+	}
+
+	return decoratedSecretData, nil
 }
 
 func decorateObject(object map[string]interface{}, resourceControl *dockm.ResourceControl) map[string]interface{} {
