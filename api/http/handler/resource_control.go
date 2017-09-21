@@ -78,6 +78,8 @@ func (handler *ResourceHandler) handlePostResources(w http.ResponseWriter, r *ht
 		resourceControlType = dockm.ServiceResourceControl
 	case "volume":
 		resourceControlType = dockm.VolumeResourceControl
+	case "network":
+		resourceControlType = dockm.NetworkResourceControl
 	default:
 		httperror.WriteErrorResponse(w, dockm.ErrInvalidResourceControlType, http.StatusBadRequest, handler.Logger)
 		return
